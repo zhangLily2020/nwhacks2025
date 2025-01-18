@@ -1,0 +1,181 @@
+{
+  "commands": [
+    {
+      "command": "git init",
+      "type": "git",
+      "description": "Initializes a new Git repository.",
+      "syntax": "git init [DIRECTORY]",
+      "usage": "git init my-project",
+      "params": [
+        "--bare: Create a bare repository (no working directory).",
+        "-q: Suppress output."
+      ]
+    },
+    {
+      "command": "git clone",
+      "type": "git",
+      "description": "Creates a copy of an existing repository.",
+      "syntax": "git clone [OPTIONS] REPOSITORY [DIRECTORY]",
+      "usage": "git clone https://github.com/user/repo.git",
+      "params": [
+        "--depth: Create a shallow clone with limited history.",
+        "--branch: Clone a specific branch.",
+        "--recurse-submodules: Clone submodules."
+      ]
+    },
+    {
+      "command": "git add",
+      "type": "git",
+      "description": "Adds file changes to the staging area.",
+      "syntax": "git add [OPTIONS] [FILE...]",
+      "usage": "git add .",
+      "params": [
+        "-n: Dry run to show what would be added.",
+        "-A: Add changes to all files.",
+        "--ignore-errors: Skip files with errors."
+      ]
+    },
+    {
+      "command": "git commit",
+      "type": "git",
+      "description": "Records changes to the repository.",
+      "syntax": "git commit [OPTIONS] -m 'MESSAGE'",
+      "usage": "git commit -m 'Initial commit'",
+      "params": [
+        "-m: Use the given message as the commit message.",
+        "--amend: Modify the last commit.",
+        "--no-edit: Use the previous commit message."
+      ]
+    },
+    {
+      "command": "git status",
+      "type": "git",
+      "description": "Displays the working directory and staging area status.",
+      "syntax": "git status [OPTIONS]",
+      "usage": "git status",
+      "params": [
+        "-s: Display a short format.",
+        "--ignored: Show ignored files.",
+        "--branch: Display branch information."
+      ]
+    },
+    {
+      "command": "git log",
+      "type": "git",
+      "description": "Shows the commit history.",
+      "syntax": "git log [OPTIONS]",
+      "usage": "git log --oneline",
+      "params": [
+        "--oneline: Show commits in a single line.",
+        "--graph: Display a graph of commits.",
+        "--author: Filter commits by author."
+      ]
+    },
+    {
+      "command": "git branch",
+      "type": "git",
+      "description": "Lists, creates, or deletes branches.",
+      "syntax": "git branch [OPTIONS] [BRANCH_NAME]",
+      "usage": "git branch -d old-branch",
+      "params": [
+        "-d: Delete a branch.",
+        "-m: Rename a branch.",
+        "-r: List remote branches."
+      ]
+    },
+    {
+      "command": "git checkout",
+      "type": "git",
+      "description": "Switches branches or restores working directory files.",
+      "syntax": "git checkout [OPTIONS] [BRANCH_OR_FILE]",
+      "usage": "git checkout feature-branch",
+      "params": [
+        "-b: Create and switch to a new branch.",
+        "--: Indicate that the following arguments are files."
+      ]
+    },
+    {
+      "command": "git merge",
+      "type": "git",
+      "description": "Merges branches together.",
+      "syntax": "git merge [BRANCH_NAME]",
+      "usage": "git merge feature-branch",
+      "params": [
+        "--no-ff: Create a merge commit even if fast-forward is possible.",
+        "--squash: Combine all commits into one during the merge.",
+        "--abort: Abort the current merge."
+      ]
+    },
+    {
+      "command": "git pull",
+      "type": "git",
+      "description": "Fetches changes from a remote repository and merges them.",
+      "syntax": "git pull [OPTIONS] [REMOTE] [BRANCH]",
+      "usage": "git pull origin main",
+      "params": [
+        "--rebase: Rebase the local commits on top of the remote branch.",
+        "-q: Suppress output."
+      ]
+    },
+    {
+      "command": "git push",
+      "type": "git",
+      "description": "Uploads local changes to a remote repository.",
+      "syntax": "git push [OPTIONS] [REMOTE] [BRANCH]",
+      "usage": "git push origin main",
+      "params": [
+        "-u: Set upstream for the branch.",
+        "-f: Force push, overwriting remote changes.",
+        "--tags: Push all tags."
+      ]
+    },
+    {
+      "command": "git stash",
+      "type": "git",
+      "description": "Temporarily saves changes in a 'stash' and reverts the working directory.",
+      "syntax": "git stash [OPTIONS]",
+      "usage": "git stash save 'WIP: refactoring'",
+      "params": [
+        "save: Save the changes with a custom message.",
+        "list: Show all stashed changes.",
+        "apply: Apply the latest or a specific stash."
+      ]
+    },
+    {
+      "command": "git rebase",
+      "type": "git",
+      "description": "Reapplies commits on top of another base branch.",
+      "syntax": "git rebase [OPTIONS] [BASE_BRANCH]",
+      "usage": "git rebase main",
+      "params": [
+        "--interactive: Edit commit history interactively.",
+        "--onto: Rebase onto a specific branch.",
+        "--abort: Abort the rebase process."
+      ]
+    },
+    {
+      "command": "git reset",
+      "type": "git",
+      "description": "Resets the current branch to a specific commit.",
+      "syntax": "git reset [OPTIONS] [COMMIT]",
+      "usage": "git reset --hard HEAD~1",
+      "params": [
+        "--soft: Keep changes staged.",
+        "--mixed: Unstage changes but keep them in the working directory.",
+        "--hard: Discard all changes."
+      ]
+    },
+    {
+      "command": "git diff",
+      "type": "git",
+      "description": "Shows the differences between commits, branches, or working directory changes.",
+      "syntax": "git diff [OPTIONS] [COMMIT1] [COMMIT2]",
+      "usage": "git diff HEAD~1 HEAD",
+      "params": [
+        "--staged: Show changes staged for commit.",
+        "--name-only: List filenames without showing differences.",
+        "--color: Highlight differences."
+      ]
+    }
+  ]
+}

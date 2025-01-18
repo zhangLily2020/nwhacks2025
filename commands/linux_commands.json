@@ -2,6 +2,7 @@
   "commands": [
     {
       "command": "ls",
+      "type": "linux",
       "description": "Lists directory contents.",
       "syntax": "ls [OPTIONS] [FILE]",
       "usage": "ls -l /home/user",
@@ -14,6 +15,7 @@
     },
     {
       "command": "cd",
+      "type": "linux",
       "description": "Changes the current directory.",
       "syntax": "cd [DIRECTORY]",
       "usage": "cd /home/user/documents",
@@ -24,6 +26,7 @@
     },
     {
       "command": "cp",
+      "type": "linux",
       "description": "Copies files and directories.",
       "syntax": "cp [OPTIONS] SOURCE DEST",
       "usage": "cp -r /source /destination",
@@ -36,6 +39,7 @@
     },
     {
       "command": "mv",
+      "type": "linux",
       "description": "Moves or renames files and directories.",
       "syntax": "mv [OPTIONS] SOURCE DEST",
       "usage": "mv old_name.txt new_name.txt",
@@ -47,6 +51,7 @@
     },
     {
       "command": "rm",
+      "type": "linux",
       "description": "Removes files or directories.",
       "syntax": "rm [OPTIONS] FILE",
       "usage": "rm -r /path/to/directory",
@@ -58,6 +63,7 @@
     },
     {
       "command": "cat",
+      "type": "linux",
       "description": "Concatenates and displays file content.",
       "syntax": "cat [OPTIONS] FILE",
       "usage": "cat file.txt",
@@ -69,6 +75,7 @@
     },
     {
       "command": "grep",
+      "type": "linux",
       "description": "Searches for patterns in files.",
       "syntax": "grep [OPTIONS] PATTERN [FILE...]",
       "usage": "grep 'search_term' file.txt",
@@ -81,6 +88,7 @@
     },
     {
       "command": "chmod",
+      "type": "linux",
       "description": "Changes file permissions.",
       "syntax": "chmod [OPTIONS] MODE FILE",
       "usage": "chmod 755 script.sh",
@@ -91,6 +99,7 @@
     },
     {
       "command": "find",
+      "type": "linux",
       "description": "Searches for files and directories in a directory hierarchy.",
       "syntax": "find [OPTIONS] [PATH] [EXPRESSION]",
       "usage": "find /home -name '*.txt'",
@@ -103,6 +112,7 @@
     },
     {
       "command": "tar",
+      "type": "linux",
       "description": "Archives files into tarballs or extracts them.",
       "syntax": "tar [OPTIONS] [FILE...]",
       "usage": "tar -cvf archive.tar file1 file2",
@@ -112,7 +122,78 @@
         "-v: Verbose output.",
         "-f: Specify the archive file name."
       ]
+    },
+    {
+      "command": "ps",
+      "type": "linux",
+      "description": "Displays information about active processes.",
+      "syntax": "ps [OPTIONS]",
+      "usage": "ps aux",
+      "params": [
+        "-a: Show all processes.",
+        "-u: Display user-oriented output.",
+        "-x: Include processes without a controlling terminal."
+      ]
+    },
+    {
+      "command": "top",
+      "type": "linux",
+      "description": "Displays real-time process activity.",
+      "syntax": "top",
+      "usage": "top",
+      "params": [
+        "-u: Display tasks for a specific user.",
+        "-n: Limit the number of iterations.",
+        "-d: Set the delay between updates."
+      ]
+    },
+    {
+      "command": "df",
+      "type": "linux",
+      "description": "Reports file system disk space usage.",
+      "syntax": "df [OPTIONS] [FILE]",
+      "usage": "df -h",
+      "params": [
+        "-h: Human-readable output.",
+        "-T: Show file system types.",
+        "-i: Display inode usage."
+      ]
+    },
+    {
+      "command": "du",
+      "type": "linux",
+      "description": "Estimates file and directory space usage.",
+      "syntax": "du [OPTIONS] [FILE]",
+      "usage": "du -sh /path/to/directory",
+      "params": [
+        "-h: Human-readable output.",
+        "-s: Display a summary for each argument.",
+        "-c: Show a total at the end."
+      ]
+    },
+    {
+      "command": "curl",
+      "type": "linux",
+      "description": "Transfers data from or to a server using supported protocols.",
+      "syntax": "curl [OPTIONS] [URL]",
+      "usage": "curl -O https://example.com/file.txt",
+      "params": [
+        "-O: Save output to a file.",
+        "-I: Fetch the HTTP headers only.",
+        "-X: Specify a custom request method."
+      ]
+    },
+    {
+      "command": "wget",
+      "type": "linux",
+      "description": "Non-interactive network downloader.",
+      "syntax": "wget [OPTIONS] [URL]",
+      "usage": "wget https://example.com/file.zip",
+      "params": [
+        "-q: Quiet mode.",
+        "-O: Specify the output file name.",
+        "-r: Recursive download."
+      ]
     }
-  ],
-  "type": "linux"
+  ]
 }
