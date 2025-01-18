@@ -1,0 +1,118 @@
+{
+  "commands": [
+    {
+      "command": "ls",
+      "description": "Lists directory contents.",
+      "syntax": "ls [OPTIONS] [FILE]",
+      "usage": "ls -l /home/user",
+      "params": [
+        "-a: Show all files, including hidden ones.",
+        "-l: Use a long listing format.",
+        "-h: Human-readable file sizes.",
+        "-R: List directories recursively."
+      ]
+    },
+    {
+      "command": "cd",
+      "description": "Changes the current directory.",
+      "syntax": "cd [DIRECTORY]",
+      "usage": "cd /home/user/documents",
+      "params": [
+        "-P: Use the physical directory structure and resolve symlinks.",
+        "-L: Use the logical directory structure."
+      ]
+    },
+    {
+      "command": "cp",
+      "description": "Copies files and directories.",
+      "syntax": "cp [OPTIONS] SOURCE DEST",
+      "usage": "cp -r /source /destination",
+      "params": [
+        "-r: Copy directories recursively.",
+        "-v: Verbose output, show files as they are copied.",
+        "-i: Prompt before overwrite.",
+        "-u: Copy only when the source file is newer."
+      ]
+    },
+    {
+      "command": "mv",
+      "description": "Moves or renames files and directories.",
+      "syntax": "mv [OPTIONS] SOURCE DEST",
+      "usage": "mv old_name.txt new_name.txt",
+      "params": [
+        "-v: Verbose output, show files as they are moved.",
+        "-i: Prompt before overwrite.",
+        "-n: Do not overwrite existing files."
+      ]
+    },
+    {
+      "command": "rm",
+      "description": "Removes files or directories.",
+      "syntax": "rm [OPTIONS] FILE",
+      "usage": "rm -r /path/to/directory",
+      "params": [
+        "-r: Remove directories and their contents recursively.",
+        "-f: Force removal without prompt.",
+        "-i: Prompt before every removal."
+      ]
+    },
+    {
+      "command": "cat",
+      "description": "Concatenates and displays file content.",
+      "syntax": "cat [OPTIONS] FILE",
+      "usage": "cat file.txt",
+      "params": [
+        "-n: Number all output lines.",
+        "-b: Number non-empty output lines.",
+        "-s: Suppress repeated empty output lines."
+      ]
+    },
+    {
+      "command": "grep",
+      "description": "Searches for patterns in files.",
+      "syntax": "grep [OPTIONS] PATTERN [FILE...]",
+      "usage": "grep 'search_term' file.txt",
+      "params": [
+        "-i: Ignore case.",
+        "-r: Recursively search directories.",
+        "-v: Invert match (show lines that do not match).",
+        "-n: Show line numbers with output."
+      ]
+    },
+    {
+      "command": "chmod",
+      "description": "Changes file permissions.",
+      "syntax": "chmod [OPTIONS] MODE FILE",
+      "usage": "chmod 755 script.sh",
+      "params": [
+        "-R: Recursively change permissions of directories.",
+        "--reference=FILE: Use FILE's permissions as a reference."
+      ]
+    },
+    {
+      "command": "find",
+      "description": "Searches for files and directories in a directory hierarchy.",
+      "syntax": "find [OPTIONS] [PATH] [EXPRESSION]",
+      "usage": "find /home -name '*.txt'",
+      "params": [
+        "-name: Search for files by name.",
+        "-type: Search by file type (e.g., d for directories, f for files).",
+        "-size: Search by file size.",
+        "-exec: Execute a command on matching files."
+      ]
+    },
+    {
+      "command": "tar",
+      "description": "Archives files into tarballs or extracts them.",
+      "syntax": "tar [OPTIONS] [FILE...]",
+      "usage": "tar -cvf archive.tar file1 file2",
+      "params": [
+        "-c: Create a new archive.",
+        "-x: Extract files from an archive.",
+        "-v: Verbose output.",
+        "-f: Specify the archive file name."
+      ]
+    }
+  ],
+  "type": "linux"
+}
