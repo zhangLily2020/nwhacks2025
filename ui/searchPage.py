@@ -3,54 +3,9 @@ from textual.containers import Container
 from textual.widgets import Input, Button, Select, Static
 
 class SearchBarApp(App):
-    CSS = """
-    Screen {
-        align: center middle;
-        padding: 2;
-        # background: #f0f0f0;
-    }
-
-    Container {
-        width: 70%;
-        height: 5;
-        layout: horizontal;
-        align: center middle;
-        border: round #cccccc;
-        # background: white;
-    }
-
-    Input {
-        width: 60%;
-        height: auto;
-        padding: 1;
-        # border: white;
-    }
-
-    Select {
-        width: 25%;
-        height: auto;
-        align: center middle;
-    }
-
-    Button {
-        width: 15%;
-        align: center middle;
-        background: #4285f4;
-        color: white;
-        border: none;
-        height: auto;
-        padding: 1;
-    }
-
-    Button:hover {
-        background: #357ae8;
-    }
-
-    #output {
-        margin-top: 1;
-        color: black;
-    }
-    """
+    CSS_PATH = "searchPage.tcss"
+    def on_mount(self) -> None:
+        self.theme = "solarized-light"
 
     def compose(self) -> ComposeResult:
         """Create the widgets for the UI."""

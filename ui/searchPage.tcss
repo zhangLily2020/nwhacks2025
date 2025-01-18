@@ -1,0 +1,46 @@
+Screen {
+    align: center middle;
+    padding: 2;
+    # background: #f0f0f0;
+}
+
+Container {
+    width: 70%;
+    height: 5;
+    layout: horizontal;
+    align: center middle;
+    border: round #cccccc;
+    # background: white;
+}
+
+Input {
+    width: 60%;
+    height: auto;
+    padding: 1;
+    # border: white;
+}
+
+Select {
+    width: 25%;
+    height: auto;
+    align: center middle;
+}
+
+Button {
+    width: 15%;
+    align: center middle;
+    background: #4285f4;
+    color: white;
+    border: none;
+    height: auto;
+    padding: 1;
+}
+
+Button:hover {
+    background: #357ae8;
+}
+
+#output {
+    margin-top: 1;
+    color: black;
+}
