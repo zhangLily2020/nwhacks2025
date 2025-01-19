@@ -8,5 +8,4 @@ def man_search(command, dict):
 
 def vec_search(query, n_results, db):
     results = db.query(query_texts=[query], n_results=n_results)
-    print(results)
     return results['ids'][0]

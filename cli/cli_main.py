@@ -1,6 +1,6 @@
 from rich import print
 from query import man_search, vec_search
-from cli.cli_helpers import parse_args, print_to_terminal
+from cli.cli_helpers import parse_args, print_to_terminal, print_short
 import chromadb
 from backend.json_to_chromaDB import insert_to_chroma
 
@@ -21,7 +21,10 @@ def run_cli(args, json_objects_dict):
         else:
             chroma_client, db = CreateChroma(json_objects_dict)
             result = vec_search(query, n_results, db)
-        print_to_terminal(json_objects_dict[int(result[0])])
+        if not flags or '-v' not in flags:
+            print_short(json_objects_dict[int(result[0])])
+        else:
+            print_to_terminal(json_objects_dict[int(result[0])])
 
     except Exception as e:
         print(f"[bold red]Invalid arguments:[/bold red] {e}")

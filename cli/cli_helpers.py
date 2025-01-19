@@ -8,6 +8,15 @@ from rich.markdown import Markdown
 def help():
     return
 
+def print_short(result):
+    console = Console()
+    description_text = Text("Description: ", style="bold green") + Text(result['description'], style="yellow")
+    markdown_block = Markdown(f"```{result['type']}\n{result['syntax']}\n```")
+    stx_text = Text("Syntax: ", style="bold green")
+    console.print(stx_text)
+    console.print(markdown_block)
+    console.print(description_text)
+
 def print_to_terminal(result):
     console = Console()
 
@@ -18,6 +27,7 @@ def print_to_terminal(result):
     syntax_text = Text("Syntax: ", style="bold green") + Text(result['syntax'], style="cyan")
     usage_text = Text("Usage: ", style="bold green") + Text(result['usage'], style="cyan")
     params_text = Text("Parameters: ", style="bold green")
+    stx_text = Text("Syntax: ", style="bold green")
     for param in result['params']:
         params_text.append(f"\n  - {param}", style="white")
 
@@ -27,7 +37,6 @@ def print_to_terminal(result):
     console.print(command_text)
     console.print(type_text)
     console.print(description_text)
-    stx_text = Text("Syntax: ", style="bold green")
     console.print(stx_text)
     console.print(markdown_block)
     console.print(Panel(usage_text, title="Usage", border_style="cyan"))
@@ -60,6 +69,6 @@ def parse_args(args):
     return flags, query, n_results
 
 def validate_flag(flag):
-    valid_flags = ['-ai']
+    valid_flags = ['-ai', '-v']
     if flag not in valid_flags:
         raise Exception("Invalid flag parameter")
