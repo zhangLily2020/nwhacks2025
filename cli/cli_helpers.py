@@ -4,7 +4,7 @@ def help():
     return
 
 def print_to_terminal(result):
-    print("Hello, [bold magenta]Rich[/bold magenta]!")
+    print(result)
 
 # [flags] [query] [n_results]
 def parse_args(args):
@@ -33,6 +33,6 @@ def parse_args(args):
     return flags, query, n_results
 
 def validate_flag(flag):
-    valid_flags = []
+    valid_flags = ['-ai']
     if flag not in valid_flags:
         raise Exception("Invalid flag parameter")

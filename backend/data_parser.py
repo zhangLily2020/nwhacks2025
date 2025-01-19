@@ -6,7 +6,6 @@ def parse_json():
     d = {}
     id_count = 0
     for path in data_paths:
-        print(path)
         try:
             with open(path, "r") as file:
                 json_data = json.load(file)
