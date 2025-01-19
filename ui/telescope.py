@@ -7,6 +7,10 @@ from textual.fuzzy import FuzzySearch
 from rich.text import Text
 from rich.console import Group
 from rich_pixels import Pixels
+from rich.columns import Columns
+from rich.layout import Layout
+from rich.panel import Panel
+from rich import box
 
 def CreateCandidates(dict, cmd_to_idx):
     res = []
@@ -43,13 +47,20 @@ class TelescopeView(Screen):
 
             # Right section: Info page
             with VerticalScroll(id="vertical"):
-                with Horizontal(id="horizontal_title"):
-                    text = Text
-                    self.info_name = Static("Info Panel", id="info-label")
-                    pixels = Pixels.from_image_path("ui/logo_small.png")
-                    self.img = Static(pixels, id="img-logo")
-                    yield self.info_name
-                    yield self.img
+                # Create the text panel
+                txt = Text("Go and start searching >v<")
+                panel = Panel(txt, title="termiknow", height=5)  # Adjust height as needed
+                pixels = Pixels.from_image_path("ui/logo_small.png")
+                pixels_panel = Panel(pixels, height=13, box=box.SIMPLE)  # Match the height
+
+                layout = Layout(size=15)
+                layout.split_row(
+                    Layout(panel, ratio=1, name="panel"),
+                    Layout(pixels_panel, ratio=1, name="image")
+                )
+
+                self.title_view = Static(layout, id="horizontal_title")
+                yield self.title_view
 
                 self.info_content = Static("", id="info-content")
                 # Rich Text for the description
@@ -144,8 +155,20 @@ class TelescopeView(Screen):
             idx = int(selected_item.id[1:])
             cmd = self.input_dict[idx]
 
-            # Update name and type
-            self.info_name.update(f"{cmd['command']}")
+            # Create the text panel
+            txt = Text(f"{cmd['command']}")
+            panel = Panel(txt, title="termiknow", height=5)  # Adjust height as needed
+            pixels = Pixels.from_image_path("ui/logo_small.png")
+            pixels_panel = Panel(pixels, height=13, box=box.SIMPLE)  # Match the height
+
+            layout = Layout(size=15)
+            layout.split_row(
+                Layout(panel, ratio=1, name="panel"),
+                Layout(pixels_panel, ratio=1, name="image")
+            )
+            self.title_view.update(layout)
+
+
             rich_text_type = Text("Type: ", style="bold blue") + Text(cmd['type'], style="yellow")
             self.info_content.update(rich_text_type)
 
@@ -182,6 +205,7 @@ class TelescopeApp(App):
     def on_mount(self) -> None:
         self.theme = "gruvbox"
         self.push_screen(TelescopeView(db=self.db, input_dict=self.input_dict))
+        self.title = "termiknow"
 
 
 if __name__ == "__main__":
