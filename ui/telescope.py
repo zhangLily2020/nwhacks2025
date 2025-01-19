@@ -176,7 +176,7 @@ class TelescopeView(Screen):
             rich_text_desc = Text("Description: ", style="bold magenta") + Text(cmd['description'], style="white")
             self.desc.update(rich_text_desc)
 
-            # Update syntax
+            # Update
             syntax_label = Text("Usage:", style="bold")  # Add label above syntax
             rich_syntax = rich.syntax.Syntax(cmd['usage'], cmd['type'], line_numbers=True)
             # Combine label and syntax using a Vertical Static or similar container

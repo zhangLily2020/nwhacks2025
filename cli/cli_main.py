@@ -22,9 +22,11 @@ def run_cli(args, json_objects_dict):
             chroma_client, db = CreateChroma(json_objects_dict)
             result = vec_search(query, n_results, db)
         if not flags or '-v' not in flags:
-            print_short(json_objects_dict[int(result[0])])
+            for r in result:
+                print_short(json_objects_dict[int(r)])
         else:
-            print_to_terminal(json_objects_dict[int(result[0])])
+            for r in result:
+                print_to_terminal(json_objects_dict[int(r)])
 
     except Exception as e:
         print(f"[bold red]Invalid arguments:[/bold red] {e}")

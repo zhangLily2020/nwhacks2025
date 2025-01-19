@@ -17,6 +17,7 @@ def print_short(result):
     console.print(stx_text)
     console.print(markdown_block)
     console.print(description_text)
+    console.print("-" * 40)
 
 def print_to_terminal(result):
     console = Console()
@@ -42,7 +43,7 @@ def print_to_terminal(result):
     console.print(markdown_block)
     console.print(Panel(usage_text, title="Usage", border_style="cyan"))
     console.print(Panel(params_text, title="Parameters", border_style="green"))
-
+    console.print("-" * 40)
 
 def display_help():
     console = Console()
