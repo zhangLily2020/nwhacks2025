@@ -16,7 +16,7 @@ def run_cli(args, json_objects_dict):
     try: 
         flags, query, n_results = parse_args(args)
 
-        if not flags or '-ai' not in flags:
+        if not flags or '-vec' not in flags:
             result = man_search(query, json_objects_dict)
         else:
             chroma_client, db = CreateChroma(json_objects_dict)
