@@ -1,33 +1,17 @@
 from textual.app import App, ComposeResult
-from textual.containers import Container, Horizontal, Vertical, VerticalScroll
-# from textual.app import App, ComposeResult
-# from textual.containers import Container, VerticalScroll
-# from textual.widgets import Input, ListView, ListItem, Label
-from textual.widgets import (Input, Button, Select, Checkbox, Footer, Header, RadioButton, RadioSet,
-                             ListView, ListItem, Label)
+from textual.containers import Horizontal, Vertical, VerticalScroll, Container
+from textual.widgets import Input, Button, Select, Footer, Header, ListView, ListItem, Label
 from textual.screen import Screen
 from textual.fuzzy import FuzzySearch
 
-
 class TelescopeView(Screen):
     CSS_PATH = "telescope.tcss"
-    def compose(self):
+
+    def compose(self) -> ComposeResult:
         # Main layout container
         with Horizontal():
             # Left section: Search bar and file selector
             with Vertical():
-                # # Search bar
-                # yield Label("Search", id="search-label")
-                # yield Input(placeholder="Type to search...", id="search-bar")
-                #
-                # # File selector
-                # yield Label("Files", id="file-label")
-                # yield ListView(
-                #     ListItem(Label("File 1")),
-                #     ListItem(Label("File 2")),
-                #     ListItem(Label("File 3")),
-                #     id="file-selector",
-                # )
                 with Container():
                     yield Input(placeholder="Search here...", id="search_input")
                     yield Select(
@@ -35,13 +19,13 @@ class TelescopeView(Screen):
                         id="search_type"
                     )
                     yield Button("🔍", id="search_button")
-                yield VerticalScroll(RadioSet(id="output_container"))  # Container for Checkboxes
+                yield VerticalScroll(ListView(id="output_container"))  # Container for search results
 
             # Right section: Info page
             with Vertical():
                 yield Label("Info Panel", id="info-label")
-                yield Label("Select a file to view details here.", id="info-content")
-
+                self.info_content = Label("Select a file to view details here.", id="info-content")
+                yield self.info_content
         yield Footer()
         yield Header(show_clock=True)
 
@@ -49,7 +33,7 @@ class TelescopeView(Screen):
         """Handle input changes dynamically."""
         search_input = event.value.strip()  # Get current input
         search_type = self.query_one("#search_type", Select).value
-        output_container = self.query_one("#output_container", RadioSet)
+        output_container = self.query_one("#output_container", ListView)
 
         # Sample data for fuzzy search
         candidates = [
@@ -75,23 +59,30 @@ class TelescopeView(Screen):
             results.sort(key=lambda x: x[1], reverse=True)
 
             # Clear previous results
-            await output_container.remove_children()
+            await output_container.clear()
 
-            # Add new results as Checkboxes
+            # Add new results as ListItems
+            x = 0
             if results:
                 for result, score in results:
-                    await output_container.mount(
-                        RadioButton(f"{result} (Score: {score:.2f})", value=False)
+                    await output_container.append(
+                        ListItem(Label(f"{result} (Score: {score:.2f})"), id="a" + str(x))
                     )
+                    x += 1
             else:
-                await output_container.mount(RadioButton("No matches found.", value=False))
+                await output_container.append(ListItem(Label("No matches found.")))
         else:
-            await output_container.remove_children()
-            await output_container.mount(RadioButton("No input or invalid search type.", value=False))
+            await output_container.clear()
+            await output_container.append(ListItem(Label("No input or invalid search type.")))
 
+    def on_list_view_selected(self, event: ListView.Selected):
+            """Handle selection of items in the file selector."""
+            selected_item = event.item
+            if selected_item:
+                self.info_content.update(f"Selected: {selected_item.id}")
 
 class TelescopeApp(App):
-    def on_mount(self):
+    def on_mount(self) -> None:
         self.push_screen(TelescopeView())
 
 

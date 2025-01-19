@@ -10,7 +10,8 @@ Container {
     height: auto;
     layout: horizontal;
     align: center middle;
-    border: round #cccccc;
+    background: $boost;
+    # border: round #cccccc;
     # border: round #cccccc;
     # background: white;
 }
@@ -67,5 +68,9 @@ Button:hover {
     # border-radius: 2;  /* Rounded corners */
     padding: 2;  /* Additional padding */
     # border: 1px solid $primary;  /* Border to match */
+}
+
+Header {
+    height: 2;
 }
 

@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d983b9e9-23fc-4f7e-843d-b55d65692da6" name="Changes" comment="fixed main.py">
-      <change afterPath="$PROJECT_DIR$/ui/telescope.tcss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/searchPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/searchPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/searchPage.tcss" beforeDir="false" afterPath="$PROJECT_DIR$/ui/searchPage.tcss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/telescope.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/telescope.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/telescope.tcss" beforeDir="false" afterPath="$PROJECT_DIR$/ui/telescope.tcss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +163,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="fixed main.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/nwhacks2025$main.coverage" NAME="main Coverage Results" MODIFIED="1737231770683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/nwhacks2025$mainMenu.coverage" NAME="mainMenu Coverage Results" MODIFIED="1737233213511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ui" />
+    <SUITE FILE_PATH="coverage/nwhacks2025$main.coverage" NAME="main Coverage Results" MODIFIED="1737232340905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nwhacks2025$mainMenu.coverage" NAME="mainMenu Coverage Results" MODIFIED="1737231955971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ui" />
   </component>
 </project>
