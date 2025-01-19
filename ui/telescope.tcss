@@ -79,3 +79,34 @@ Header {
     height: 2;
 }
 
+#vertical {
+    padding: 1;
+}
+
+#info-label {
+    background: $primary;
+    padding: 1;
+    margin-bottom: 1;
+    text-align: center;
+    text-style: bold;
+
+    align: center middle;
+}
+
+#info-content {
+    padding: 1;
+    margin-bottom: 1;
+}
+
+.place_bg {
+    background: $surface;
+}
+
+.no_bg {
+    background: transparent;
+}
+
+#info-markdown, #info-syntax, #info-usage, #info-params, #info-desc {
+    padding: 1 1 0 1;
+    margin-bottom: 1;
+}
