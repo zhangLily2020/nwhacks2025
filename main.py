@@ -9,9 +9,8 @@ import chromadb.config
 import os
 
 def CreateChroma(json_objects_dict):
-    chroma_client = chromadb.Client(path='./backend')
+    chroma_client = chromadb.PersistentClient(path="./backend")
     db = chroma_client.get_or_create_collection(name="manpp")
-    insert_to_chroma(json_objects_dict, db)
     return chroma_client, db
 
 json_objects_dict = parse_json()
