@@ -14,7 +14,7 @@ def run_cli(args, json_objects_dict, db):
         else:
             result = vec_search(query, n_results, db)
 
-        print_to_terminal(result)
+        print_to_terminal(json_objects_dict[int(result[0])])
 
     except Exception as e:
         print(f"[bold red]Invalid arguments:[/bold red] {e}")
