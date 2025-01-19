@@ -1,4 +1,5 @@
 import ui.searchPage
+import ui.telescope
 import sys
 import chromadb
 from backend.data_parser import parse_json
@@ -30,6 +31,7 @@ if __name__ == '__main__':
         run_cli(args, json_objects_dict)
     else:
         chroma_client, db = CreateChroma(json_objects_dict)
-        app = ui.searchPage.SearchBarApp()
+        # app = ui.searchPage.SearchBarApp()
+        app = ui.telescope.TelescopeApp()
         app.run()
         print(2)

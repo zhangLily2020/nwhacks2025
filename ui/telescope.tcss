@@ -5,7 +5,8 @@ Screen {
 }
 
 Container {
-    width: 50%;
+    width: 100%;
+    margin: 0 3 0 0;
     height: auto;
     layout: horizontal;
     align: center middle;

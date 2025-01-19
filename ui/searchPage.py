@@ -1,6 +1,6 @@
 from textual.app import App, ComposeResult
 from textual.containers import Container, VerticalScroll
-from textual.widgets import Input, Button, Select, Static, Footer, Header
+from textual.widgets import Input, Button, Select, Checkbox, Footer, Header, RadioButton, RadioSet
 from textual.fuzzy import FuzzySearch
 
 class SearchBarApp(App):
@@ -18,7 +18,7 @@ class SearchBarApp(App):
                 id="search_type"
             )
             yield Button("🔍", id="search_button")
-        yield VerticalScroll(Static("", id="output"))  # To display search results
+        yield VerticalScroll(RadioSet(id="output_container"))  # Container for Checkboxes
         yield Footer()
         yield Header(show_clock=True)
 
@@ -26,7 +26,7 @@ class SearchBarApp(App):
         """Handle input changes dynamically."""
         search_input = event.value.strip()  # Get current input
         search_type = self.query_one("#search_type", Select).value
-        output_widget = self.query_one("#output", Static)
+        output_container = self.query_one("#output_container", RadioSet)
 
         # Sample data for fuzzy search
         candidates = [
@@ -51,19 +51,20 @@ class SearchBarApp(App):
             # Sort by score (higher is better)
             results.sort(key=lambda x: x[1], reverse=True)
 
-            # Display results
-            if results:
-                output_text = "Fuzzy Search Results:\n"
-                for result, score in results:
-                    output_text += f"- {result} (Score: {score:.2f})\n"
-            else:
-                output_text = "No matches found."
-        else:
-            output_text = ""
+            # Clear previous results
+            await output_container.remove_children()
 
-        # Update the output widget
-        output_widget.update(output_text)
-        output_widget.add_class("styled")
+            # Add new results as Checkboxes
+            if results:
+                for result, score in results:
+                    await output_container.mount(
+                        RadioButton(f"{result} (Score: {score:.2f})", value=False)
+                    )
+            else:
+                await output_container.mount(RadioButton("No matches found.", value=False))
+        else:
+            await output_container.remove_children()
+            await output_container.mount(RadioButton("No input or invalid search type.", value=False))
 
 
 if __name__ == "__main__":
