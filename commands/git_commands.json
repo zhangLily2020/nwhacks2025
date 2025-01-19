@@ -176,6 +176,212 @@
         "--name-only: List filenames without showing differences.",
         "--color: Highlight differences."
       ]
+    },
+    {
+      "command": "git remote",
+      "type": "bash",
+      "description": "Manages set of tracked repositories.",
+      "syntax": "git remote [OPTIONS] [COMMAND]",
+      "usage": "git remote add origin https://github.com/user/repo.git",
+      "params": [
+        "add: Adds a remote repository.",
+        "remove: Removes a remote repository.",
+        "set-url: Changes the URL of a remote repository."
+      ]
+    },
+    {
+      "command": "git fetch",
+      "type": "bash",
+      "description": "Fetches changes from a remote repository without merging.",
+      "syntax": "git fetch [OPTIONS] [REMOTE]",
+      "usage": "git fetch origin",
+      "params": [
+        "--all: Fetch all remotes.",
+        "--prune: Remove deleted remote branches.",
+        "--tags: Fetch all tags."
+      ]
+    },
+    {
+      "command": "git tag",
+      "type": "bash",
+      "description": "Creates, lists, or deletes tags.",
+      "syntax": "git tag [OPTIONS] [TAG_NAME]",
+      "usage": "git tag v1.0",
+      "params": [
+        "-a: Create an annotated tag.",
+        "-d: Delete a tag.",
+        "-l: List tags matching a pattern."
+      ]
+    },
+    {
+      "command": "git show",
+      "type": "bash",
+      "description": "Shows various types of objects, like commits or tags.",
+      "syntax": "git show [OPTIONS] [OBJECT]",
+      "usage": "git show v1.0",
+      "params": [
+        "--stat: Show diffstat of the commit.",
+        "--pretty: Format the commit log output."
+      ]
+    },
+    {
+      "command": "git cherry-pick",
+      "type": "bash",
+      "description": "Applies the changes from a specific commit to the current branch.",
+      "syntax": "git cherry-pick [COMMIT]",
+      "usage": "git cherry-pick abc123",
+      "params": [
+        "--abort: Abort the cherry-pick operation.",
+        "--edit: Edit the commit message before applying."
+      ]
+    },
+    {
+      "command": "git mv",
+      "type": "bash",
+      "description": "Moves or renames a file.",
+      "syntax": "git mv [OLD_NAME] [NEW_NAME]",
+      "usage": "git mv oldfile.txt newfile.txt",
+      "params": [
+        "-f: Force the move or rename.",
+        "-n: Perform a dry run."
+      ]
+    },
+    {
+      "command": "git rm",
+      "type": "bash",
+      "description": "Removes files from the working directory and staging area.",
+      "syntax": "git rm [OPTIONS] [FILE...]",
+      "usage": "git rm file.txt",
+      "params": [
+        "--cached: Remove the file only from the staging area.",
+        "--force: Force remove a file."
+      ]
+    },
+    {
+      "command": "git reflog",
+      "type": "bash",
+      "description": "Shows the history of HEAD and other references.",
+      "syntax": "git reflog",
+      "usage": "git reflog",
+      "params": [
+        "--expire: Expire older reflog entries.",
+        "--all: Show all references."
+      ]
+    },
+    {
+      "command": "git blame",
+      "type": "bash",
+      "description": "Shows line-by-line author information for a file.",
+      "syntax": "git blame [OPTIONS] [FILE]",
+      "usage": "git blame file.txt",
+      "params": [
+        "--line-porcelain: Output in a more machine-readable format.",
+        "-L: Limit the range of lines to show."
+      ]
+    },
+    {
+      "command": "git clean",
+      "type": "bash",
+      "description": "Removes untracked files and directories.",
+      "syntax": "git clean [OPTIONS]",
+      "usage": "git clean -fd",
+      "params": [
+        "-f: Force clean.",
+        "-d: Remove untracked directories.",
+        "-n: Dry run, show what would be removed."
+      ]
+    },
+    {
+      "command": "git archive",
+      "type": "bash",
+      "description": "Creates an archive of the repository.",
+      "syntax": "git archive [OPTIONS] [COMMIT]",
+      "usage": "git archive --format=zip --output=repo.zip HEAD",
+      "params": [
+        "--format: Specify the archive format (zip, tar, etc.).",
+        "--output: Specify the output file name.",
+        "--prefix: Add a prefix to all files in the archive."
+      ]
+    },
+    {
+      "command": "git config",
+      "type": "bash",
+      "description": "Gets and sets configuration options for Git.",
+      "syntax": "git config [OPTIONS] [KEY] [VALUE]",
+      "usage": "git config --global user.name 'Your Name'",
+      "params": [
+        "--global: Set the configuration globally for all repositories.",
+        "--system: Set the configuration at the system level.",
+        "--local: Set the configuration for the current repository."
+      ]
+    },
+    {
+      "command": "git bisect",
+      "type": "bash",
+      "description": "Helps to find the commit that introduced a bug.",
+      "syntax": "git bisect [OPTIONS] [COMMAND]",
+      "usage": "git bisect start",
+      "params": [
+        "start: Begin the bisect session.",
+        "good: Mark a commit as 'good'.",
+        "bad: Mark a commit as 'bad'."
+      ]
+    },
+    {
+      "command": "git config --global core.editor",
+      "type": "bash",
+      "description": "Sets the default editor for Git commands like commit.",
+      "syntax": "git config --global core.editor [EDITOR]",
+      "usage": "git config --global core.editor vim",
+      "params": [
+        "[EDITOR]: Specify the editor (vim, nano, etc.)."
+      ]
+    },
+    {
+      "command": "git reflog expire",
+      "type": "bash",
+      "description": "Expires entries from the reflog based on the specified criteria.",
+      "syntax": "git reflog expire [OPTIONS]",
+      "usage": "git reflog expire --expire=now --all",
+      "params": [
+        "--expire: Specify when to expire entries.",
+        "--all: Expire all references."
+      ]
+    },
+    {
+      "command": "git gc",
+      "type": "bash",
+      "description": "Runs the garbage collection to optimize the repository.",
+      "syntax": "git gc [OPTIONS]",
+      "usage": "git gc --aggressive",
+      "params": [
+        "--aggressive: Optimize the repository more aggressively.",
+        "--prune: Remove unreachable objects."
+      ]
+    },
+    {
+      "command": "git worktree",
+      "type": "bash",
+      "description": "Manages multiple working trees attached to the same repository.",
+      "syntax": "git worktree [OPTIONS] [COMMAND]",
+      "usage": "git worktree add ../new-branch feature-branch",
+      "params": [
+        "add: Add a new working tree.",
+        "remove: Remove a working tree.",
+        "list: List all working trees."
+      ]
+    },
+    {
+      "command": "git submodule",
+      "type": "bash",
+      "description": "Manages submodules (repositories within repositories).",
+      "syntax": "git submodule [COMMAND]",
+      "usage": "git submodule update --init --recursive",
+      "params": [
+        "add: Add a new submodule.",
+        "update: Update the submodule(s).",
+        "status: Show the status of submodules."
+      ]
     }
   ]
 }
