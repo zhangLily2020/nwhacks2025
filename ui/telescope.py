@@ -80,12 +80,23 @@ class TelescopeView(Screen):
             await output_container.clear()
             await output_container.append(ListItem(Label("No input or invalid search type.")))
 
+    async def on_button_pressed(self, event: Button.Pressed) -> None:
+        output_container = self.query_one("#output_container", ListView)
+        if event.button.id == "search_button":
+            search_input = self.query_one("#search_input", Input).value.strip()
+            search_type = self.query_one("#search_type", Select).value
+
+            if search_type == "vector" and search_input:
+                await output_container.append(ListItem(Label("This is for vector search result.")))
+
+
     def on_list_view_selected(self, event: ListView.Selected):
             """Handle selection of items in the file selector."""
             selected_item = event.item
             if selected_item:
                 idx = int(selected_item.id[1:])
                 self.info_content.update(f"Description: {self.dict[idx]['description']}")
+
 
     def do_vec_search(self):
         results = self.db.query(query_texts=[""], n_results=1)
