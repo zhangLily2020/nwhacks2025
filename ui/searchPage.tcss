@@ -1,22 +1,23 @@
 Screen {
-    align: center middle;
-    padding: 2;
+    # align: center middle;
+    padding: 0 2;
     # background: #f0f0f0;
 }
 
 Container {
     width: 70%;
-    height: 5;
+    height: auto;
     layout: horizontal;
     align: center middle;
     border: round #cccccc;
+    # border: round #cccccc;
     # background: white;
 }
 
 Input {
     width: 60%;
     height: auto;
-    padding: 1;
+    # padding: 1;
     # border: white;
 }
 
@@ -42,5 +43,28 @@ Button:hover {
 
 #output {
     margin-top: 1;
-    color: black;
+    color: white;
 }
+
+#search_input {
+    # width: 70%;
+    background: $surface;
+    color: $text;
+    # border: tall $primary;
+    padding: 0 1;
+    border: transparent;
+ }
+
+ #search_button {
+    background: transparent;
+    width: auto;
+
+ }
+
+ #output.styled {
+    background: $surface; /* Background after the search */
+    # border-radius: 2;  /* Rounded corners */
+    padding: 2;  /* Additional padding */
+    # border: 1px solid $primary;  /* Border to match */
+}
+
