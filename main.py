@@ -14,6 +14,6 @@ if __name__ == '__main__':
         args = sys.argv[1:]
         run_cli(args, db)
     else:
-        #app = ui.searchPage.SearchBarApp()
-        # app.run()
+        app = ui.searchPage.SearchBarApp()
+        app.run()
         print(2)
