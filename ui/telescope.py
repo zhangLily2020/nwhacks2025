@@ -15,7 +15,7 @@ class TelescopeView(Screen):
                 with Container():
                     yield Input(placeholder="Search here...", id="search_input")
                     yield Select(
-                        options=[("Fuzzy Search", "fuzzy"), ("Vector Search", "vector")],
+                        options=[("Fuzzy", "fuzzy"), ("Vector", "vector")],
                         id="search_type"
                     )
                     yield Button("🔍", id="search_button")
@@ -66,7 +66,7 @@ class TelescopeView(Screen):
             if results:
                 for result, score in results:
                     await output_container.append(
-                        ListItem(Label(f"{result} (Score: {score:.2f})"), id="a" + str(x))
+                        ListItem(Label(f"{result}"), id="a" + str(x))
                     )
                     x += 1
             else:
@@ -83,6 +83,7 @@ class TelescopeView(Screen):
 
 class TelescopeApp(App):
     def on_mount(self) -> None:
+        self.theme = "gruvbox"
         self.push_screen(TelescopeView())
 
 

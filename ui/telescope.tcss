@@ -1,6 +1,6 @@
 Screen {
     # align: center middle;
-    padding: 0 2;
+    # padding: 0 2;
     # background: #f0f0f0;
 }
 
