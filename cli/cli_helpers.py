@@ -47,46 +47,35 @@ def print_to_terminal(result):
 def display_help():
     console = Console()
 
-    console.print("[bold cyan]MyCLI Tool[/bold cyan] - A CLI tool for amazing tasks\n")
+    console.print("[bold cyan]termiknow[/bold cyan] - A devtool to remind you of terminal commands\n")
 
     console.print("Usage:")
-    console.print("  [bold]mycli [command] [options][/bold]\n")
+    console.print("  For TUI: [bold]termiknow [command] [options][/bold]\n")
+    console.print("  For CLI: [bold]termiknow <query> <num_results (optional)> [command] [options][/bold]\n")
 
-    console.print("Commands:")
+    console.print("CLI Commands and Options:")
     table = Table(show_header=True, header_style="bold magenta")
-    table.add_column("Command", style="cyan", no_wrap=True)
+    table.add_column("Argument", style="cyan", no_wrap=True)
     table.add_column("Description", style="green")
     table.add_column("Example", style="yellow")
 
     table.add_row(
-        "init",
-        "Initialize the project in the current directory",
-        "mycli init"
+        "help",
+        "Brings up this help page",
+        "termiknow help"
     )
     table.add_row(
-        "add",
-        "Add a new item to the project",
-        "mycli add --name 'ItemName'"
+        "-vec",
+        "Uses the termiknow CLI to search for the closest command \nmatching the search query using vector embeddings \n[bold]Note:[/bold] If -vec is not included, the termiknow expects the query to be a valid command",
+        "termiknow -vec 'list all files'\n\ntermiknow ls"
     )
     table.add_row(
-        "remove",
-        "Remove an item from the project",
-        "mycli remove --id 123"
-    )
-    table.add_row(
-        "list",
-        "List all items in the project",
-        "mycli list --all"
+        "-v",
+        "Enables verbose printing",
+        "termiknow -vec -v 'print current directory'"
     )
 
     console.print(table)
-
-    console.print("\nOptions:")
-    console.print("  [bold]--help[/bold]       Show this help message and exit")
-    console.print("  [bold]--version[/bold]    Show the version of the tool\n")
-
-    console.print(Text("For more details, visit: ", style="dim") + Text("https://example.com/docs",
-                                                                        style="link https://example.com/docs"))
 
 # [flags] [query] [n_results]
 def parse_args(args):
@@ -115,6 +104,6 @@ def parse_args(args):
     return flags, query, n_results
 
 def validate_flag(flag):
-    valid_flags = ['-ai', '-v']
+    valid_flags = ['-vec', '-v']
     if flag not in valid_flags:
         raise Exception("Invalid flag parameter")
