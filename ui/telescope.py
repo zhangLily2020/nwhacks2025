@@ -6,6 +6,7 @@ from textual.screen import Screen
 from textual.fuzzy import FuzzySearch
 from rich.text import Text
 from rich.console import Group
+from rich_pixels import Pixels
 
 def CreateCandidates(dict, cmd_to_idx):
     res = []
@@ -42,9 +43,15 @@ class TelescopeView(Screen):
 
             # Right section: Info page
             with VerticalScroll(id="vertical"):
-                self.info_name = Label("Info Panel", id="info-label")
-                self.info_content = Static("", id="info-content")
+                with Horizontal(id="horizontal_title"):
+                    text = Text
+                    self.info_name = Static("Info Panel", id="info-label")
+                    pixels = Pixels.from_image_path("ui/logo_small.png")
+                    self.img = Static(pixels, id="img-logo")
+                    yield self.info_name
+                    yield self.img
 
+                self.info_content = Static("", id="info-content")
                 # Rich Text for the description
                 self.desc = Static("", id="info-desc")
 
@@ -59,7 +66,7 @@ class TelescopeView(Screen):
                 self.params = Markdown("", id="info-params")
                 self.params.add_class("no_bg")
 
-                yield self.info_name
+
                 yield self.info_content
                 yield self.desc
                 yield self.usage

@@ -1,6 +1,6 @@
 from rich import print
 from query import man_search, vec_search
-from cli.cli_helpers import parse_args, print_to_terminal, print_short
+from cli.cli_helpers import parse_args, print_to_terminal, print_short, display_help
 import chromadb
 from backend.json_to_chromaDB import insert_to_chroma
 
@@ -11,7 +11,7 @@ def CreateChroma(json_objects_dict):
 
 def run_cli(args, json_objects_dict):
     if args[0].lower() == "help":
-        return help()
+        return display_help()
     
     try: 
         flags, query, n_results = parse_args(args)

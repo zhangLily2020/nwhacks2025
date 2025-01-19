@@ -2,6 +2,7 @@ from rich import print
 
 from rich.console import Console
 from rich.panel import Panel
+from rich.table import Table
 from rich.text import Text
 from rich.markdown import Markdown
 
@@ -41,6 +42,51 @@ def print_to_terminal(result):
     console.print(markdown_block)
     console.print(Panel(usage_text, title="Usage", border_style="cyan"))
     console.print(Panel(params_text, title="Parameters", border_style="green"))
+
+
+def display_help():
+    console = Console()
+
+    console.print("[bold cyan]MyCLI Tool[/bold cyan] - A CLI tool for amazing tasks\n")
+
+    console.print("Usage:")
+    console.print("  [bold]mycli [command] [options][/bold]\n")
+
+    console.print("Commands:")
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column("Command", style="cyan", no_wrap=True)
+    table.add_column("Description", style="green")
+    table.add_column("Example", style="yellow")
+
+    table.add_row(
+        "init",
+        "Initialize the project in the current directory",
+        "mycli init"
+    )
+    table.add_row(
+        "add",
+        "Add a new item to the project",
+        "mycli add --name 'ItemName'"
+    )
+    table.add_row(
+        "remove",
+        "Remove an item from the project",
+        "mycli remove --id 123"
+    )
+    table.add_row(
+        "list",
+        "List all items in the project",
+        "mycli list --all"
+    )
+
+    console.print(table)
+
+    console.print("\nOptions:")
+    console.print("  [bold]--help[/bold]       Show this help message and exit")
+    console.print("  [bold]--version[/bold]    Show the version of the tool\n")
+
+    console.print(Text("For more details, visit: ", style="dim") + Text("https://example.com/docs",
+                                                                        style="link https://example.com/docs"))
 
 # [flags] [query] [n_results]
 def parse_args(args):
