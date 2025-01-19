@@ -1,12 +1,10 @@
 from textual.app import App, ComposeResult
 from textual.containers import Container, VerticalScroll
-from textual.widgets import Input, Button, Select, Static, RadioSet, RadioButton, Footer, Header
-
+from textual.widgets import Input, Button, Select, Static, Footer, Header
+from textual.fuzzy import FuzzySearch
 
 class SearchBarApp(App):
     CSS_PATH = "searchPage.tcss"
-    # def on_mount(self) -> None:
-    #     self.theme = "solarized-light"
 
     def on_mount(self) -> None:
         self.title = "Man++"
@@ -24,43 +22,49 @@ class SearchBarApp(App):
         yield Footer()
         yield Header(show_clock=True)
 
-    async def on_button_pressed(self, event: Button.Pressed) -> None:
-        """Handle button presses."""
-        if event.button.id == "search_button":
-            search_input = self.query_one("#search_input", Input).value
-            search_type = self.query_one("#search_type", Select).value
-            output_widget = self.query_one("#output", Static)
+    async def on_input_changed(self, event: Input.Changed) -> None:
+        """Handle input changes dynamically."""
+        search_input = event.value.strip()  # Get current input
+        search_type = self.query_one("#search_type", Select).value
+        output_widget = self.query_one("#output", Static)
 
-            #send and receive query
-            returned_values = []
+        # Sample data for fuzzy search
+        candidates = [
+            "git init",
+            "git commit",
+            "git push origin main",
+            "git clone https://example.com/repo.git",
+            "git status",
+            "git log --oneline",
+            "git pull",
+        ]
 
-            #temp
-            x = '''{
-                  "command": "git init",
-                  "type": "git",
-                  "description": "Initializes a new Git repository.",
-                  "syntax": "git init [DIRECTORY]",
-                  "usage": "git init my-project",
-                  "params": [
-                    "--bare: Create a bare repository (no working directory).",
-                    "-q: Suppress output."
-                  ]
-                }'''
-            returned_values.append(x)
+        if search_type == "fuzzy" and search_input:
+            # Perform fuzzy search
+            searcher = FuzzySearch()
+            results = [
+                (candidate, score)
+                for candidate in candidates
+                if (score := searcher.match(search_input, candidate)[0]) > 0
+            ]
 
-            if search_type in ["fuzzy", "vector"]:
-                search_type_display = search_type.capitalize()  # Show "Fuzzy" or "Vector"
+            # Sort by score (higher is better)
+            results.sort(key=lambda x: x[1], reverse=True)
+
+            # Display results
+            if results:
+                output_text = "Fuzzy Search Results:\n"
+                for result, score in results:
+                    output_text += f"- {result} (Score: {score:.2f})\n"
             else:
-                search_type_display = "Not Selected"
+                output_text = "No matches found."
+        else:
+            output_text = ""
 
-            # Display the selected option and search query
-            output_widget.update(f"Search type: {search_type_display}\nQuery Results: {x}")
-            output_widget.add_class("styled")
+        # Update the output widget
+        output_widget.update(output_text)
+        output_widget.add_class("styled")
 
-    def action_add_radio_buttons(self) -> None:
-        """Add more RadioButtons to the RadioSet."""
-        radio_set = self.query_one("#radio_set")
-        radio_set.mount(RadioButton("New RadioButton"))
 
 if __name__ == "__main__":
     app = SearchBarApp()
