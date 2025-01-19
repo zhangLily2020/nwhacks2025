@@ -32,6 +32,5 @@ if __name__ == '__main__':
     else:
         chroma_client, db = CreateChroma(json_objects_dict)
         # app = ui.searchPage.SearchBarApp()
-        app = ui.telescope.TelescopeApp()
+        app = ui.telescope.TelescopeApp(db, json_objects_dict)
         app.run()
-        print(2)

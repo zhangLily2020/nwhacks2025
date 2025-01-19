@@ -4,8 +4,22 @@ from textual.widgets import Input, Button, Select, Footer, Header, ListView, Lis
 from textual.screen import Screen
 from textual.fuzzy import FuzzySearch
 
+def CreateCandidates(dict, cmd_to_idx):
+    res = []
+    for key in dict:
+        res.append(dict[key]['command'])
+        cmd_to_idx[dict[key]['command']] = key
+    return res
+
 class TelescopeView(Screen):
     CSS_PATH = "telescope.tcss"
+
+    def __init__(self, db, dict) -> None:
+        super().__init__()
+        self.db = db
+        self.dict = dict
+        self.cmd_to_idx = {}
+        self.candidates = CreateCandidates(dict, self.cmd_to_idx)
 
     def compose(self) -> ComposeResult:
         # Main layout container
@@ -36,15 +50,7 @@ class TelescopeView(Screen):
         output_container = self.query_one("#output_container", ListView)
 
         # Sample data for fuzzy search
-        candidates = [
-            "git init",
-            "git commit",
-            "git push origin main",
-            "git clone https://example.com/repo.git",
-            "git status",
-            "git log --oneline",
-            "git pull",
-        ]
+        candidates = self.candidates
 
         if search_type == "fuzzy" and search_input:
             # Perform fuzzy search
@@ -62,13 +68,12 @@ class TelescopeView(Screen):
             await output_container.clear()
 
             # Add new results as ListItems
-            x = 0
             if results:
                 for result, score in results:
+                    idx = self.cmd_to_idx[result]
                     await output_container.append(
-                        ListItem(Label(f"{result}"), id="a" + str(x))
+                        ListItem(Label(f"{result}"), id="a" + str(idx))
                     )
-                    x += 1
             else:
                 await output_container.append(ListItem(Label("No matches found.")))
         else:
@@ -79,12 +84,21 @@ class TelescopeView(Screen):
             """Handle selection of items in the file selector."""
             selected_item = event.item
             if selected_item:
-                self.info_content.update(f"Selected: {selected_item.id}")
+                idx = int(selected_item.id[1:])
+                self.info_content.update(f"Description: {self.dict[idx]['description']}")
+
+    def do_vec_search(self):
+        results = self.db.query(query_texts=[""], n_results=1)
 
 class TelescopeApp(App):
+    def __init__(self, db, dict) -> None:
+        super().__init__()
+        self.db = db
+        self.dict = dict
+
     def on_mount(self) -> None:
         self.theme = "gruvbox"
-        self.push_screen(TelescopeView())
+        self.push_screen(TelescopeView(db=self.db, dict=self.dict))
 
 
 if __name__ == "__main__":
