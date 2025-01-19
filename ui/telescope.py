@@ -14,12 +14,13 @@ def CreateCandidates(dict, cmd_to_idx):
 class TelescopeView(Screen):
     CSS_PATH = "telescope.tcss"
 
-    def __init__(self, db, dict) -> None:
+    def __init__(self, db, input_dict) -> None:
         super().__init__()
         self.db = db
-        self.dict = dict
+        self.input_dict = input_dict
         self.cmd_to_idx = {}
-        self.candidates = CreateCandidates(dict, self.cmd_to_idx)
+        self.my_query = ""
+        self.candidates = CreateCandidates(input_dict, self.cmd_to_idx)
 
     def compose(self) -> ComposeResult:
         # Main layout container
@@ -37,9 +38,11 @@ class TelescopeView(Screen):
 
             # Right section: Info page
             with Vertical():
-                yield Label("Info Panel", id="info-label")
+                self.info_name = Label("Info Panel", id="info-label")
                 self.info_content = Label("Select a file to view details here.", id="info-content")
+                yield self.info_name
                 yield self.info_content
+
         yield Footer()
         yield Header(show_clock=True)
 
@@ -51,6 +54,9 @@ class TelescopeView(Screen):
 
         # Sample data for fuzzy search
         candidates = self.candidates
+
+        if search_type == "vector" and search_input:
+            self.my_query = search_input
 
         if search_type == "fuzzy" and search_input:
             # Perform fuzzy search
@@ -87,7 +93,13 @@ class TelescopeView(Screen):
             search_type = self.query_one("#search_type", Select).value
 
             if search_type == "vector" and search_input:
-                await output_container.append(ListItem(Label("This is for vector search result.")))
+                await output_container.clear()
+
+                results = self.db.query(query_texts=[self.my_query], n_results=8)['ids'][0]
+                for str_idx in results:
+                    idx = int(str_idx)
+                    new_res = self.input_dict[idx]
+                    await output_container.append(ListItem(Label(f"{new_res['command']}"), id="a" + str(idx)))
 
 
     def on_list_view_selected(self, event: ListView.Selected):
@@ -95,21 +107,23 @@ class TelescopeView(Screen):
             selected_item = event.item
             if selected_item:
                 idx = int(selected_item.id[1:])
-                self.info_content.update(f"Description: {self.dict[idx]['description']}")
+                cmd = self.input_dict[idx]
+                self.info_name.update(f"Name: {cmd['command']}")
+                self.info_content.update(f"Description: {cmd['description']}")
 
 
     def do_vec_search(self):
         results = self.db.query(query_texts=[""], n_results=1)
 
 class TelescopeApp(App):
-    def __init__(self, db, dict) -> None:
+    def __init__(self, db, input_dict) -> None:
         super().__init__()
         self.db = db
-        self.dict = dict
+        self.input_dict = input_dict
 
     def on_mount(self) -> None:
         self.theme = "gruvbox"
-        self.push_screen(TelescopeView(db=self.db, dict=self.dict))
+        self.push_screen(TelescopeView(db=self.db, input_dict=self.input_dict))
 
 
 if __name__ == "__main__":

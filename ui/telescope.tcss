@@ -19,8 +19,6 @@ Container {
 Input {
     width: 60%;
     height: auto;
-    # padding: 1;
-    # border: white;
 }
 
 Select {
@@ -33,14 +31,16 @@ Button {
     width: 15%;
     align: center middle;
     background: #4285f4;
-    color: white;
+    color: transparent;
     border: none;
     height: auto;
-    padding: 1;
+    padding: 1 7 1 0;
+    text-align: center;
+    content-align: center middle;
 }
 
 Button:hover {
-    background: #357ae8;
+    background: transparent;
 }
 
 #output {
@@ -48,13 +48,18 @@ Button:hover {
     color: white;
 }
 
+ListItem {
+    padding: 0 0 0 2;
+}
+
+ListView {
+    padding: 1 0 0 0;
+}
+
 #search_input {
-    # width: 70%;
     background: $surface;
     color: $text;
-    # border: tall $primary;
     padding: 0 1;
-    border: transparent;
  }
 
  #search_button {
