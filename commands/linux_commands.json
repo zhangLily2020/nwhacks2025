@@ -2,7 +2,7 @@
   "commands": [
     {
       "command": "ls",
-      "type": "linux",
+      "type": "bash",
       "description": "Lists directory contents.",
       "syntax": "ls [OPTIONS] [FILE]",
       "usage": "ls -l /home/user",
@@ -15,7 +15,7 @@
     },
     {
       "command": "cd",
-      "type": "linux",
+      "type": "bash",
       "description": "Changes the current directory.",
       "syntax": "cd [DIRECTORY]",
       "usage": "cd /home/user/documents",
@@ -26,7 +26,7 @@
     },
     {
       "command": "cp",
-      "type": "linux",
+      "type": "bash",
       "description": "Copies files and directories.",
       "syntax": "cp [OPTIONS] SOURCE DEST",
       "usage": "cp -r /source /destination",
@@ -39,7 +39,7 @@
     },
     {
       "command": "mv",
-      "type": "linux",
+      "type": "bash",
       "description": "Moves or renames files and directories.",
       "syntax": "mv [OPTIONS] SOURCE DEST",
       "usage": "mv old_name.txt new_name.txt",
@@ -51,7 +51,7 @@
     },
     {
       "command": "rm",
-      "type": "linux",
+      "type": "bash",
       "description": "Removes files or directories.",
       "syntax": "rm [OPTIONS] FILE",
       "usage": "rm -r /path/to/directory",
@@ -63,7 +63,7 @@
     },
     {
       "command": "cat",
-      "type": "linux",
+      "type": "bash",
       "description": "Concatenates and displays file content.",
       "syntax": "cat [OPTIONS] FILE",
       "usage": "cat file.txt",
@@ -75,7 +75,7 @@
     },
     {
       "command": "grep",
-      "type": "linux",
+      "type": "bash",
       "description": "Searches for patterns in files.",
       "syntax": "grep [OPTIONS] PATTERN [FILE...]",
       "usage": "grep 'search_term' file.txt",
@@ -88,7 +88,7 @@
     },
     {
       "command": "chmod",
-      "type": "linux",
+      "type": "bash",
       "description": "Changes file permissions.",
       "syntax": "chmod [OPTIONS] MODE FILE",
       "usage": "chmod 755 script.sh",
@@ -99,7 +99,7 @@
     },
     {
       "command": "find",
-      "type": "linux",
+      "type": "bash",
       "description": "Searches for files and directories in a directory hierarchy.",
       "syntax": "find [OPTIONS] [PATH] [EXPRESSION]",
       "usage": "find /home -name '*.txt'",
@@ -112,7 +112,7 @@
     },
     {
       "command": "tar",
-      "type": "linux",
+      "type": "bash",
       "description": "Archives files into tarballs or extracts them.",
       "syntax": "tar [OPTIONS] [FILE...]",
       "usage": "tar -cvf archive.tar file1 file2",
@@ -125,7 +125,7 @@
     },
     {
       "command": "ps",
-      "type": "linux",
+      "type": "bash",
       "description": "Displays information about active processes.",
       "syntax": "ps [OPTIONS]",
       "usage": "ps aux",
@@ -137,7 +137,7 @@
     },
     {
       "command": "top",
-      "type": "linux",
+      "type": "bash",
       "description": "Displays real-time process activity.",
       "syntax": "top",
       "usage": "top",
@@ -149,7 +149,7 @@
     },
     {
       "command": "df",
-      "type": "linux",
+      "type": "bash",
       "description": "Reports file system disk space usage.",
       "syntax": "df [OPTIONS] [FILE]",
       "usage": "df -h",
@@ -161,7 +161,7 @@
     },
     {
       "command": "du",
-      "type": "linux",
+      "type": "bash",
       "description": "Estimates file and directory space usage.",
       "syntax": "du [OPTIONS] [FILE]",
       "usage": "du -sh /path/to/directory",
@@ -173,7 +173,7 @@
     },
     {
       "command": "curl",
-      "type": "linux",
+      "type": "bash",
       "description": "Transfers data from or to a server using supported protocols.",
       "syntax": "curl [OPTIONS] [URL]",
       "usage": "curl -O https://example.com/file.txt",
@@ -185,7 +185,7 @@
     },
     {
       "command": "wget",
-      "type": "linux",
+      "type": "bash",
       "description": "Non-interactive network downloader.",
       "syntax": "wget [OPTIONS] [URL]",
       "usage": "wget https://example.com/file.zip",

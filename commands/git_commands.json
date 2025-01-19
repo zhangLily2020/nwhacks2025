@@ -2,7 +2,7 @@
   "commands": [
     {
       "command": "git init",
-      "type": "git",
+      "type": "bash",
       "description": "Initializes a new Git repository.",
       "syntax": "git init [DIRECTORY]",
       "usage": "git init my-project",
@@ -13,7 +13,7 @@
     },
     {
       "command": "git clone",
-      "type": "git",
+      "type": "bash",
       "description": "Creates a copy of an existing repository.",
       "syntax": "git clone [OPTIONS] REPOSITORY [DIRECTORY]",
       "usage": "git clone https://github.com/user/repo.git",
@@ -25,7 +25,7 @@
     },
     {
       "command": "git add",
-      "type": "git",
+      "type": "bash",
       "description": "Adds file changes to the staging area.",
       "syntax": "git add [OPTIONS] [FILE...]",
       "usage": "git add .",
@@ -37,7 +37,7 @@
     },
     {
       "command": "git commit",
-      "type": "git",
+      "type": "bash",
       "description": "Records changes to the repository.",
       "syntax": "git commit [OPTIONS] -m 'MESSAGE'",
       "usage": "git commit -m 'Initial commit'",
@@ -49,7 +49,7 @@
     },
     {
       "command": "git status",
-      "type": "git",
+      "type": "bash",
       "description": "Displays the working directory and staging area status.",
       "syntax": "git status [OPTIONS]",
       "usage": "git status",
@@ -61,7 +61,7 @@
     },
     {
       "command": "git log",
-      "type": "git",
+      "type": "bash",
       "description": "Shows the commit history.",
       "syntax": "git log [OPTIONS]",
       "usage": "git log --oneline",
@@ -73,7 +73,7 @@
     },
     {
       "command": "git branch",
-      "type": "git",
+      "type": "bash",
       "description": "Lists, creates, or deletes branches.",
       "syntax": "git branch [OPTIONS] [BRANCH_NAME]",
       "usage": "git branch -d old-branch",
@@ -85,7 +85,7 @@
     },
     {
       "command": "git checkout",
-      "type": "git",
+      "type": "bash",
       "description": "Switches branches or restores working directory files.",
       "syntax": "git checkout [OPTIONS] [BRANCH_OR_FILE]",
       "usage": "git checkout feature-branch",
@@ -96,7 +96,7 @@
     },
     {
       "command": "git merge",
-      "type": "git",
+      "type": "bash",
       "description": "Merges branches together.",
       "syntax": "git merge [BRANCH_NAME]",
       "usage": "git merge feature-branch",
@@ -108,7 +108,7 @@
     },
     {
       "command": "git pull",
-      "type": "git",
+      "type": "bash",
       "description": "Fetches changes from a remote repository and merges them.",
       "syntax": "git pull [OPTIONS] [REMOTE] [BRANCH]",
       "usage": "git pull origin main",
@@ -119,7 +119,7 @@
     },
     {
       "command": "git push",
-      "type": "git",
+      "type": "bash",
       "description": "Uploads local changes to a remote repository.",
       "syntax": "git push [OPTIONS] [REMOTE] [BRANCH]",
       "usage": "git push origin main",
@@ -131,7 +131,7 @@
     },
     {
       "command": "git stash",
-      "type": "git",
+      "type": "bash",
       "description": "Temporarily saves changes in a 'stash' and reverts the working directory.",
       "syntax": "git stash [OPTIONS]",
       "usage": "git stash save 'WIP: refactoring'",
@@ -143,7 +143,7 @@
     },
     {
       "command": "git rebase",
-      "type": "git",
+      "type": "bash",
       "description": "Reapplies commits on top of another base branch.",
       "syntax": "git rebase [OPTIONS] [BASE_BRANCH]",
       "usage": "git rebase main",
@@ -155,7 +155,7 @@
     },
     {
       "command": "git reset",
-      "type": "git",
+      "type": "bash",
       "description": "Resets the current branch to a specific commit.",
       "syntax": "git reset [OPTIONS] [COMMIT]",
       "usage": "git reset --hard HEAD~1",
@@ -167,7 +167,7 @@
     },
     {
       "command": "git diff",
-      "type": "git",
+      "type": "bash",
       "description": "Shows the differences between commits, branches, or working directory changes.",
       "syntax": "git diff [OPTIONS] [COMMIT1] [COMMIT2]",
       "usage": "git diff HEAD~1 HEAD",

@@ -1,8 +1,15 @@
 from rich import print
 from query import man_search, vec_search
 from cli.cli_helpers import parse_args, print_to_terminal
+import chromadb
+from backend.json_to_chromaDB import insert_to_chroma
 
-def run_cli(args, json_objects_dict, db):
+def CreateChroma(json_objects_dict):
+    chroma_client = chromadb.PersistentClient(path='../backend')
+    db = chroma_client.get_or_create_collection(name="manpp")
+    return chroma_client, db
+
+def run_cli(args, json_objects_dict):
     if args[0].lower() == "help":
         return help()
     
@@ -12,8 +19,8 @@ def run_cli(args, json_objects_dict, db):
         if not flags or '-ai' not in flags:
             result = man_search(query, json_objects_dict)
         else:
+            chroma_client, db = CreateChroma(json_objects_dict)
             result = vec_search(query, n_results, db)
-
         print_to_terminal(json_objects_dict[int(result[0])])
 
     except Exception as e:
