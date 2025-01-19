@@ -1,4 +1,4 @@
-def InsertToChroma(dict, db):
+def insert_to_chroma(dict, db):
     id_strings = []
     docs = []
     for id in dict:
